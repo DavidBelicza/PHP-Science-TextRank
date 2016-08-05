@@ -9,8 +9,8 @@
         }
     ],
     "require": {
-        "php": "^7.*",
-        "hhvm": "^3*"
+        "php": "7.*",
+        "hhvm": "3.*"
     },
     "require-dev": {
         "phpunit/phpunit": "^5.4"
