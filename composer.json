@@ -1,0 +1,26 @@
+{
+    "name": "php-science/textrank",
+    "description": "This package implements the TextRank algorithm.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "David Belicza",
+            "email": "87.bdavid@gmail.com"
+        }
+    ],
+    "require": {
+        "php" : "7.*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.4"
+    },
+    "autoload": {
+        "psr-4": {
+            "PhpScience\\TextRank\\": ["src/", "tests/"]
+        }
+    },
+    "scripts": {
+        "test": "phpunit --colors='always' $(pwd)/tests",
+        "test-hhvm": "hhvm -d hhvm.php7.scalar_types=true /usr/local/bin/phpunit --colors='always' $(pwd)/tests"
+    }
+}
