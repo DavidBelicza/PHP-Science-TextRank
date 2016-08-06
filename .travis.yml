@@ -1,11 +1,11 @@
 language: php
 php:
   - '7.0'
-  - hhvm
+  - hhvm-3.12
   
 dist: xenial
+sudo: required
   
 before_script:
   - composer install
-  - mkdir -p /home/travis/.phpenv/versions/hhvm/etc/conf.d
-  - phpenv config-add travis.hhvm.ini
+  - sudo bash -c 'echo "hhvm.php7.scalar_types = true" >> /etc/hhvm/php.ini'
