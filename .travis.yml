@@ -5,6 +5,7 @@ php:
   
 dist: trusty
 sudo: required
+group: edge
   
 before_script:
   - composer install
