@@ -1,6 +1,7 @@
 {
     "name": "php-science/textrank",
-    "description": "This package implements the TextRank algorithm.",
+    "description": "TextRank (automatic text summarization) for PHP7 and HHVM.",
+    "keywords": ["science", "textrank", "automatic", "summarization", "PHP7", "HHVM", "strict"],
     "license": "MIT",
     "authors": [
         {
