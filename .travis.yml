@@ -9,3 +9,4 @@ sudo: required
 before_script:
   - composer install
   - sudo bash -c 'echo "hhvm.php7.scalar_types = true" >> /etc/hhvm/php.ini'
+  - echo 'hhvm.php7.scalar_types = true' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
