@@ -7,4 +7,5 @@ dist: xenial
   
 before_script:
   - composer install
+  - mkdir -p /home/travis/.phpenv/versions/hhvm/etc/conf.d
   - phpenv config-add travis.hhvm.ini
