@@ -1,7 +1,15 @@
 language: php
 php:
   - '7.0'
-  - hhvm
+  - hhvm-3.6
+  - hhvm-3.7
+  - hhvm-3.8
+  - hhvm-3.9
+  - hhvm-3.10
+  - hhvm-3.11
+  - hhvm-3.12
+  - hhvm-3.13
+  - hhvm-3.14
   
 dist: trusty
 sudo: required
