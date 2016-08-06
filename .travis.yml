@@ -3,7 +3,7 @@ php:
   - '7.0'
   - hhvm-3.12
   
-dist: xenial
+dist: trusty
 sudo: required
   
 before_script:
