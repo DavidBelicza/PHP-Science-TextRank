@@ -4,5 +4,8 @@ php:
   - hhvm
   
 dist: xenial
+sudo: required
   
-before_script: composer install
+before_script:
+  - composer install
+  - sudo bash -c 'echo "hhvm.php7.scalar_types = true" >> /etc/hhvm/php.ini'
