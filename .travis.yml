@@ -1,5 +1,8 @@
-dist: xenial
 language: php
 php:
   - '7.0'
   - hhvm
+  
+dist: xenial
+  
+before_script: composer install
