@@ -1,4 +1,4 @@
-#PHP.Science - TextRank
+# PHP.Science - TextRank
 
 [![Build Status](https://travis-ci.org/DoveID/PHP-Science-TextRank.svg?branch=master)](https://travis-ci.org/DoveID/PHP-Science-TextRank)
 [![Latest Stable Version](https://poser.pugx.org/php-science/textrank/v/stable.svg)](https://packagist.org/packages/php-science/textrank)
