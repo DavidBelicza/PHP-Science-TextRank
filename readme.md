@@ -1,6 +1,6 @@
 # PHP.Science - TextRank
 
-[![Build Status](https://travis-ci.org/DoveID/PHP-Science-TextRank.svg?branch=master)](https://travis-ci.org/DoveID/PHP-Science-TextRank)
+[![Build Status](https://travis-ci.org/DavidBelicza/PHP-Science-TextRank.svg?branch=master)](https://travis-ci.org/DavidBelicza/PHP-Science-TextRank)
 [![Latest Stable Version](https://poser.pugx.org/php-science/textrank/v/stable.svg)](https://packagist.org/packages/php-science/textrank)
 [![License](https://img.shields.io/badge/license-MIT-33CCFF.svg)](https://opensource.org/licenses/MIT)
 [![composer.lock](https://poser.pugx.org/php-science/textrank/composerlock)](https://packagist.org/packages/php-science/textrank)
