@@ -164,8 +164,8 @@ class Parser
         );
 
         $words = array_values(
-            array_filter(
-                array_map(array($this, 'cleanWord'), $words)
+        array_filter(
+            array_map(array($this, 'cleanWord'), $words)
             )
         );
 
@@ -216,6 +216,6 @@ class Parser
      */
     protected function cleanWord(string $word): string
     {
-        return strtolower(trim($word));
+        return mb_strtolower(trim($word));
     }
 }
