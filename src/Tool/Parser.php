@@ -164,8 +164,8 @@ class Parser
         );
 
         $words = array_values(
-        array_filter(
-            array_map(array($this, 'cleanWord'), $words)
+            array_filter(
+                array_map(array($this, 'cleanWord'), $words)
             )
         );
 
