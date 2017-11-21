@@ -23,7 +23,7 @@ class English extends StopWordsAbstract
      *
      * @var array
      */
-    protected $words = array(
+    protected $words = [
         'a',
         'about',
         'above',
@@ -342,5 +342,5 @@ class English extends StopWordsAbstract
         'yours',
         'yourself',
         'yourselves'
-    );
+    ];
 }

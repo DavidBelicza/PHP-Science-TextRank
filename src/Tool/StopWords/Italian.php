@@ -16,7 +16,7 @@ class Italian extends StopWordsAbstract
      *
      * @var array
      */
-    protected $words = array(
+    protected $words = [
         'a',
         'abbastanza',
         'abbia',
@@ -677,5 +677,5 @@ class Italian extends StopWordsAbstract
         'vostro',
         'ã¨',
         'è'
-    );
+    ];
 }
