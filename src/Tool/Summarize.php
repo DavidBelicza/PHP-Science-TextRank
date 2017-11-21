@@ -58,10 +58,15 @@ class Summarize
      *
      * @return array An array from sentences.
      */
-    public function getSummarize(array &$scores, Graph &$graph, Text &$text,
-                                 int $keyWordLimit, int $sentenceLimit,
-                                 int $type): array
-    {
+    public function getSummarize(
+        array &$scores,
+        Graph &$graph,
+        Text &$text,
+        int $keyWordLimit,
+        int $sentenceLimit,
+        int $type
+    ): array {
+
         $graphData = $graph->getGraph();
         $sentences = $text->getSentences();
         $marks = $text->getMarks();
@@ -91,9 +96,11 @@ class Summarize
      * @param int   $keyWordLimit How many keyword should be used to find the
      *                            important sentences.
      */
-    protected function findAndWeightSentences(array &$scores, array &$graphData,
-                                              int $keyWordLimit)
-    {
+    protected function findAndWeightSentences(
+        array &$scores,
+        array &$graphData,
+        int $keyWordLimit
+    ) {
         $i = 0;
 
         foreach ($scores as $word => $score) {
@@ -125,9 +132,12 @@ class Summarize
      * @return array An array from sentences what are the most important
      *               sentences.
      */
-    protected function getAllImportant(array &$sentences, array &$marks,
-                                       int $sentenceLimit): array
-    {
+    protected function getAllImportant(
+        array &$sentences,
+        array &$marks,
+        int $sentenceLimit
+    ): array {
+
         $summary = [];
         $i = 0;
 
@@ -160,10 +170,12 @@ class Summarize
      * @return array An array from sentences what contains the most important
      *               sentence and its following sentences.
      */
-    protected function getFirstImportantAndFollowings(array &$sentences,
-                                                      array &$marks,
-                                                      int $sentenceLimit): array
-    {
+    protected function getFirstImportantAndFollowings(
+        array &$sentences,
+        array &$marks,
+        int $sentenceLimit
+    ): array {
+
         $summary = [];
         $startIdx = 0;
 

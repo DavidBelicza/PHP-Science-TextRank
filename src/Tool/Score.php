@@ -106,9 +106,11 @@ class Score
      *
      * @return array Scores where key is the word and value is the score.
      */
-    protected function calculateScores(array &$graphData, array &$wordMatrix,
-                                       array &$wordConnections): array
-    {
+    protected function calculateScores(
+        array &$graphData,
+        array &$wordMatrix,
+        array &$wordConnections
+    ): array {
         $scores = [];
 
         foreach ($graphData as $wordKey => $sentences) {

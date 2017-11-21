@@ -236,9 +236,12 @@ class TextRankFacade
      *
      * @return array An array from sentences.
      */
-    public function summarizeTextFreely(string $rawText, int $analyzedKeyWords,
-                                        int $expectedSentences, int $summarizeType): array
-    {
+    public function summarizeTextFreely(
+        string $rawText,
+        int $analyzedKeyWords,
+        int $expectedSentences,
+        int $summarizeType
+    ): array {
         $parser = new Parser();
         $parser->setMinimumWordLength(3);
         $parser->setRawText($rawText);
