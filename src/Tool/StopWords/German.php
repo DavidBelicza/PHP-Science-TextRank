@@ -4,7 +4,7 @@
  *
  * @see     https://github.com/doveid/php-science-textrank
  * @license https://opensource.org/licenses/MIT the MIT License
- * @author  David Belicza <87.bdavid@gmail.com>
+ * @author  Syndesi <github.com/Syndesi>
  */
 declare(strict_types=1);
 namespace PhpScience\TextRank\Tool\StopWords;
