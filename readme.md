@@ -7,6 +7,13 @@
 
 This source code is an implementation of the TextRank algorithm (Automatic summarization) on PHP7 strict mode. This package is also compatible with the HHVM engine in PHP7 mode, see the details below. It can summarize a text, article for example to a short paragraph. Before it would start the summarizing it removes the junk words what are defined in the Stopwords namespace. It is possible to extend it with another languages.
 
+## Authors
+
+Name | GitHub user
+--- | ---
+David Belicza | @DavidBelicza
+Riccardo Marton | @riccardomarton
+Syndesi | @Syndesi 
 
 ## TextRank or Automatic summarization
 > Automatic summarization is the process of reducing a text document with a computer program in order to create a summary that retains the most important points of the original document. Technologies that can make a coherent summary take into account variables such as length, writing style and syntax. Automatic data summarization is part of machine learning and data mining. The main idea of summarization is to find a representative subset of the data, which contains the information of the entire set. Summarization technologies are used in a large number of sectors in industry today. - Wikipedia
