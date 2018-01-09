@@ -7,6 +7,8 @@
 
 This source code is an implementation of the TextRank algorithm (Automatic summarization) on PHP7 strict mode. This package is also compatible with the HHVM engine in PHP7 mode, see the details below. It can summarize a text, article for example to a short paragraph. Before it would start the summarizing it removes the junk words what are defined in the Stopwords namespace. It is possible to extend it with another languages.
 
+<img src="http://i.picresize.com/images/2018/01/09/KXAWm.png" />
+
 ## Authors
 
 Name | GitHub user
