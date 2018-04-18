@@ -177,7 +177,14 @@ class Score
      */
     protected function normalize(int $value, int $min, int $max): float
     {
-        $normalized = ($value - $min) / ($max - $min);
+        $divisor = $max - $min;
+
+        if ($divisor == 0) {
+            return 0.0;
+        }
+
+        $normalized = ($value - $min) / $divisor;
+
         return $normalized;
     }
 }

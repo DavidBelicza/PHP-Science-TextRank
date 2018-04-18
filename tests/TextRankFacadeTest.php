@@ -25,7 +25,9 @@ class TextRankFacadeTest extends \PHPUnit\Framework\TestCase
         $path =  __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'res'
             . DIRECTORY_SEPARATOR . 'sample1.txt';
         $file = fopen($path, 'r');
+
         $this->sampleText1 = fread($file, filesize($path));
+
         fclose($file);
     }
 
@@ -117,5 +119,24 @@ class TextRankFacadeTest extends \PHPUnit\Framework\TestCase
         );
 
         $this->assertTrue(count($result) == 2);
+    }
+
+    public function testSmallText()
+    {
+        $api = new TextRankFacade();
+        $stopWords = new English();
+        $api->setStopWords($stopWords);
+
+        $result = $api->getOnlyKeyWords('lorem ipsum sit');
+
+        $this->assertEquals(2, count($result));
+
+        $result = $api->getOnlyKeyWords('sit');
+
+        $this->assertEquals(0, count($result));
+
+        $result = $api->getOnlyKeyWords('');
+
+        $this->assertEquals(0, count($result));
     }
 }
