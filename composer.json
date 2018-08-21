@@ -23,7 +23,6 @@
         }
     },
     "scripts": {
-        "test": "phpunit --colors='always' $(pwd)/tests",
-        "test-hhvm": "hhvm -d hhvm.php7.scalar_types=true /usr/local/bin/phpunit --colors='always' $(pwd)/tests"
+        "test": "phpunit --colors='always' $(pwd)/tests"
     }
 }
