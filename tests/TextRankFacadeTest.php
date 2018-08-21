@@ -12,6 +12,7 @@ declare(strict_types=1);
 namespace PhpScience\TextRank;
 
 use PhpScience\TextRank\Tool\StopWords\English;
+use PhpScience\TextRank\Tool\StopWords\Russian;
 use PhpScience\TextRank\Tool\Summarize;
 
 class TextRankFacadeTest extends \PHPUnit\Framework\TestCase
@@ -139,4 +140,19 @@ class TextRankFacadeTest extends \PHPUnit\Framework\TestCase
 
         $this->assertEquals(0, count($result));
     }
+
+	public function testSmallTextRu()
+	{
+		$api = new TextRankFacade();
+		$stopWords = new Russian();
+		$api->setStopWords($stopWords);
+		$result = $api->getOnlyKeyWords('между холодными ладонями');
+		$this->assertCount(2, $result);
+		
+		$result = $api->getOnlyKeyWords('конец');
+		$this->assertCount(0, $result);
+		
+		$result = $api->getOnlyKeyWords('');
+		$this->assertCount(0, $result);
+	}
 }
