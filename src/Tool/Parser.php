@@ -131,7 +131,7 @@ class Parser
     protected function getSentences(): array
     {
         $sentences = $sentences = preg_split(
-            '/(\n+)|(\\.\s)|(\\?\s)|(\\!\s)/',
+            '/(\n+)|(\.\s|\?\s|\!\s)(?![^\(]*\))/',
             $this->rawText,
             -1,
             PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE
