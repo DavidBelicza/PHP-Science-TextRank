@@ -1,23 +1,9 @@
 <?php
-/**
- * PHP Science TextRank (http://php.science/)
- *
- * @see     https://github.com/doveid/php-science-textrank
- * @license https://opensource.org/licenses/MIT the MIT License
- * @author  David Belicza <87.bdavid@gmail.com>
- */
 
 declare(strict_types=1);
 
 namespace PhpScience\TextRank\Tool;
 
-/**
- * Class Score
- *
- * It handles words and assigns weighted numbers to them.
- *
- * @package PhpScience\TextRank\Tool
- */
 class Score
 {
     /**

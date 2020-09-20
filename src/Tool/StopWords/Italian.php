@@ -4,11 +4,6 @@ declare(strict_types=1);
 
 namespace PhpScience\TextRank\Tool\StopWords;
 
-/**
- * Class Italian
- *
- * @package PhpScience\TextRank\Tool\StopWords
- */
 class Italian extends StopWordsAbstract
 {
     /**

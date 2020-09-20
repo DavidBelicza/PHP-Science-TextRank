@@ -1,22 +1,9 @@
 <?php
-/**
- * PHP Science TextRank (http://php.science/)
- *
- * @see     https://github.com/doveid/php-science-textrank
- * @license https://opensource.org/licenses/MIT the MIT License
- * @author  David Belicza <87.bdavid@gmail.com>
- * @author  Andrey Astashov <mvc.aaa@gmail.com> (Russian StopWords)
- */
 
 declare(strict_types=1);
 
 namespace PhpScience\TextRank\Tool\StopWords;
 
-/**
- * Class Russian
- *
- * @package PhpScience\TextRank\Tool\StopWords
- */
 class Russian extends StopWordsAbstract
 {
 	/**

@@ -1,11 +1,4 @@
 <?php
-/**
- * PHP Science TextRank (http://php.science/)
- *
- * @see     https://github.com/doveid/php-science-textrank
- * @license https://opensource.org/licenses/MIT the MIT License
- * @author  David Belicza <87.bdavid@gmail.com>
- */
 
 declare(strict_types=1);
 
@@ -19,11 +12,11 @@ class TextRankFacadeTest extends \PHPUnit\Framework\TestCase
 {
     protected $sampleText1;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
-        $path =  __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'res'
+        $path =  __DIR__ . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'resource'
             . DIRECTORY_SEPARATOR . 'sample1.txt';
         $file = fopen($path, 'r');
 

@@ -1,21 +1,9 @@
 <?php
-/**
- * PHP Science TextRank (http://php.science/)
- *
- * @see     https://github.com/doveid/php-science-textrank
- * @license https://opensource.org/licenses/MIT the MIT License
- * @author  Syndesi <github.com/Syndesi>
- */
 
 declare(strict_types=1);
 
 namespace PhpScience\TextRank\Tool\StopWords;
 
-/**
- * Class French
- *
- * @package PhpScience\TextRank\Tool\StopWords
- */
 class French extends StopWordsAbstract
 {
     /**
