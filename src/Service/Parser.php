@@ -10,11 +10,14 @@ use PhpScience\TextRank\Data\TextInterface;
 class Parser
 {
     private TextBuilderInterface $textBuilder;
+    private StopWordFilter       $stopWordFilter;
 
     public function __construct(
-        TextBuilderInterface $textBuilder
+        TextBuilderInterface $textBuilder,
+        StopWordFilter $stopWordFilter
     ) {
         $this->textBuilder = $textBuilder;
+        $this->stopWordFilter = $stopWordFilter;
     }
 
     public function parse(string $rawText): TextInterface
@@ -37,10 +40,14 @@ class Parser
             );
 
             foreach ($tokens as $tokenIndex => $token) {
-                $tokens[$tokenIndex] = mb_strtolower(trim($token));
-            }
+                $token = mb_strtolower(trim($token));
 
-            //@todo stopwords
+                if ($this->stopWordFilter->isStopWord($token)) {
+                    unset($tokens[$tokenIndex]);
+                } else {
+                    $tokens[$tokenIndex] = mb_strtolower(trim($token));
+                }
+            }
 
             $textMap[$sentenceIndex] = $tokens;
         }

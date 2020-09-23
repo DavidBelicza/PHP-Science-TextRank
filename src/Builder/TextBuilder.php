@@ -20,6 +20,7 @@ class TextBuilder implements TextBuilderInterface
         foreach ($textMap as $sentenceIndex => $sentenceTokenList) {
             $sentenceVector = [];
             foreach ($sentenceTokenList as $token) {
+                $token = (string)$token;
                 if (!isset($tokens[$token])) {
                     $tokens[$token] = $i;
                     $tokenId = $i;
@@ -32,12 +33,19 @@ class TextBuilder implements TextBuilderInterface
             }
 
             $sentence = new Sentence();
+            $sentence->setId($sentenceIndex);
             $sentence->setVector($sentenceVector);
+            $sentence->setOriginalValue($originalSentences[$sentenceIndex]);
             $sentences[] = $sentence;
         }
 
         $tokenMap = new TokenMap();
-        $tokenMap->setTokenMap(array_flip($tokens));
+        $tokenMap->setTokenMap(
+            array_map(
+                'strval',
+                array_flip($tokens)
+            )
+        );
 
         return new Text(
             $tokenMap,

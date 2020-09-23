@@ -6,6 +6,14 @@ namespace PhpScience\TextRank\Data\Text;
 
 interface SentenceInterface
 {
+    public function setId(int $id): void;
+
+    public function getId(): int;
+
+    public function setOriginalValue(string $originalValue): void;
+
+    public function getOriginalValue(): string;
+
     /**
      * @param int[] $vector
      */

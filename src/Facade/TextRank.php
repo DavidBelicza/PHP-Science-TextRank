@@ -4,47 +4,39 @@ declare(strict_types=1);
 
 namespace PhpScience\TextRank\Facade;
 
-use PhpScience\TextRank\Builder\PageRankDataSourceBuilder;
-use PhpScience\TextRank\Builder\TextBuilder;
+use PhpScience\TextRank\Builder\TextRankOutputBuilderInterface;
+use PhpScience\TextRank\Data\TextRankOutputInterface;
 use PhpScience\TextRank\Service\Parser;
-use PhpScience\TextRank\Strategy\PageRankStrategy;
+use PhpScience\TextRank\Strategy\RankingAlgorithmStrategyInterface;
 
 class TextRank
 {
-    public function getKeywords(string $rawText, int $maxKeywords)
-    {
-        $parser = new Parser(
-            new TextBuilder()
+    private Parser                            $parser;
+    private RankingAlgorithmStrategyInterface $rankingAlgorithmStrategy;
+    private TextRankOutputBuilderInterface    $textRankOutputBuilder;
+
+    public function __construct(
+        Parser $parser,
+        RankingAlgorithmStrategyInterface $rankingAlgorithmStrategy,
+        TextRankOutputBuilderInterface $textRankOutputBuilder
+    ) {
+        $this->parser = $parser;
+        $this->rankingAlgorithmStrategy = $rankingAlgorithmStrategy;
+        $this->textRankOutputBuilder = $textRankOutputBuilder;
+    }
+
+    public function getKeywords(
+        string $rawText,
+        int $maxKeywords
+    ): TextRankOutputInterface {
+
+        $text = $this->parser->parse($rawText);
+        $nodeCollection = $this->rankingAlgorithmStrategy->rank($text);
+
+        return $this->textRankOutputBuilder->build(
+            $text,
+            $nodeCollection,
+            $maxKeywords
         );
-
-        $text = $parser
-            ->parse($rawText);
-
-        $pageRankStrategy = new PageRankStrategy(
-            new PageRankDataSourceBuilder()
-        );
-
-        $nodeCollection = $pageRankStrategy->rank($text);
-
-        echo PHP_EOL;
-
-        $i = 0;
-        $nodes = [];
-
-        foreach ($nodeCollection->getNodes() as $node) {
-            $nodes[] = $node;
-            $i++;
-
-            if ($i === $maxKeywords) {
-                break;
-            }
-
-            /*echo $text->getTokenMap()->getToken($node->getId());
-            echo ' - ';
-            echo $node->getRank();
-            echo PHP_EOL;*/
-        }
-
-        return $nodes;
     }
 }

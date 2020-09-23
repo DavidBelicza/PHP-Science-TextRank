@@ -34,7 +34,7 @@ class PageRankStrategy implements RankingAlgorithmStrategyInterface
         $strategy = $this->createPageRankStrategy($dataSource);
         $ranking = $this->createRanking($strategy);
         $pageRankAlgorithm = $this->createPageRankAlgorithm($ranking, $strategy);
-        $maxIteration = 100;
+        $maxIteration = 1000;
 
         return $pageRankAlgorithm->run($maxIteration);
     }

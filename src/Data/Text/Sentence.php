@@ -6,7 +6,29 @@ namespace PhpScience\TextRank\Data\Text;
 
 class Sentence implements SentenceInterface
 {
-    private array $vector = [];
+    private array  $vector = [];
+    private int    $id;
+    private string $originalValue;
+
+    public function setId(int $id): void
+    {
+        $this->id = $id;
+    }
+
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    public function setOriginalValue(string $originalValue): void
+    {
+        $this->originalValue = $originalValue;
+    }
+
+    public function getOriginalValue(): string
+    {
+        return $this->originalValue;
+    }
 
     public function setVector(array $vector): void
     {
