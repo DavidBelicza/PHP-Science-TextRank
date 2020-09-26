@@ -10,19 +10,24 @@
         }
     ],
     "require": {
-        "php": "7.*",
+        "php": "7.4.*",
         "ext-ctype": "*",
-        "ext-mbstring": "*"
+        "ext-mbstring": "*",
+        "php-science/pagerank": "1.*"
     },
     "require-dev": {
-        "phpunit/phpunit": "^5.4"
+        "phpunit/phpunit": "^9"
     },
     "autoload": {
         "psr-4": {
-            "PhpScience\\TextRank\\": ["src/", "tests/"]
+            "PhpScience\\TextRank\\": [
+                "src/",
+                "tests/unit/",
+                "tests/functional/"
+            ]
         }
     },
     "scripts": {
-        "test": "phpunit --colors='always' $(pwd)/tests"
+        "test": "vendor/bin/phpunit -c $(pwd)/tests/phpunit.xml --colors='always' --do-not-cache-result"
     }
 }
