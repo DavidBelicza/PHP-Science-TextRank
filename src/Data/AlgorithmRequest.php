@@ -8,17 +8,20 @@ class AlgorithmRequest implements AlgorithmRequestInterface
 {
     private string $stopWordCsvPath;
     private string $rawText;
+    private int    $minKeywordLength;
     private int    $maxKeywords;
     private int    $maxKeySentences;
     private int    $pageRankPowerIteration;
 
     public function __construct(
         string $stopWordCsvPath = __DIR__ . '/../resource/stop-word/english.csv',
+        int $minKeywordLength = 3,
         int $maxKeywords = 10,
         int $maxKeySentences = 5,
         int $pageRankPowerIteration = 10
     ) {
         $this->stopWordCsvPath = $stopWordCsvPath;
+        $this->minKeywordLength = $minKeywordLength;
         $this->maxKeywords = $maxKeywords;
         $this->maxKeySentences = $maxKeySentences;
         $this->pageRankPowerIteration = $pageRankPowerIteration;
@@ -32,6 +35,16 @@ class AlgorithmRequest implements AlgorithmRequestInterface
     public function setStopWordCsvPath(string $stopWordCsvPath): void
     {
         $this->stopWordCsvPath = $stopWordCsvPath;
+    }
+
+    public function getMinKeywordLength(): int
+    {
+        return $this->minKeywordLength;
+    }
+
+    public function setMinKeywordLength(int $minKeywordLength): void
+    {
+        $this->minKeywordLength = $minKeywordLength;
     }
 
     public function getRawText(): string
@@ -64,13 +77,13 @@ class AlgorithmRequest implements AlgorithmRequestInterface
         $this->maxKeySentences = $maxKeySentences;
     }
 
-    public function getPageRankPowerIteration(): int
-    {
-        return $this->pageRankPowerIteration;
-    }
-
     public function setPageRankPowerIteration(int $pageRankPowerIteration): void
     {
         $this->pageRankPowerIteration = $pageRankPowerIteration;
+    }
+
+    public function getPageRankPowerIteration(): int
+    {
+        return $this->pageRankPowerIteration;
     }
 }

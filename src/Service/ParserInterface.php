@@ -8,5 +8,9 @@ use PhpScience\TextRank\Data\TextInterface;
 
 interface ParserInterface
 {
-    public function parse(string $rawText, string $stopWordsPath): TextInterface;
+    public function parse(
+        string $rawText,
+        string $stopWordsPath,
+        int $minimumTokenLength
+    ): TextInterface;
 }

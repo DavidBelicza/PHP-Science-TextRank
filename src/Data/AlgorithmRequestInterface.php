@@ -17,6 +17,16 @@ interface AlgorithmRequestInterface
     public function setStopWordCsvPath(string $stopWordCsvPath): void;
 
     /**
+     * @return int
+     */
+    public function getMinKeywordLength(): int;
+
+    /**
+     * @param int $minKeywordLength
+     */
+    public function setMinKeywordLength(int $minKeywordLength): void;
+
+    /**
      * @return string
      */
     public function getRawText(): string;

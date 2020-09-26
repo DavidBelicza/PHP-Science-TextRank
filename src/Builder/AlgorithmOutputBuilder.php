@@ -29,7 +29,11 @@ class AlgorithmOutputBuilder implements AlgorithmOutputBuilderInterface
         int $maxSentences
     ): AlgorithmOutputInterface {
         $words = $this->createWordList($text, $nodeCollection, $maxKeywords);
-        $sentences = $this->sortRankDataList->sort($sentences);
+        $sentences = array_slice(
+            $this->sortRankDataList->sort($sentences),
+            0,
+            $maxSentences
+        );
 
         $textRankOutput = new AlgorithmOutput();
         $textRankOutput->setKeyWords($words);

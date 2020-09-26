@@ -11,18 +11,25 @@ class SortRankDataList implements SortRankDataListInterface
      */
     public function sort(array $rankList): array
     {
-        $size = count($rankList);
+        $rankIndex = $this->getIndexedRank($rankList);
+        arsort($rankIndex);
+        $rankCollection = [];
 
-        for ($i = 0; $i < $size; $i++) {
-            for ($j = 0; $j < $size; $j++) {
-                if ($rankList[$i]->getRank() > $rankList[$j]->getRank()) {
-                    $tmp = $rankList[$i];
-                    $rankList[$i] = $rankList[$j];
-                    $rankList[$j] = $tmp;
-                }
-            }
+        foreach ($rankIndex as $index => $rank) {
+            $rankCollection[] = $rankList[$index];
         }
 
-        return $rankList;
+        return $rankCollection;
+    }
+
+    private function getIndexedRank(array $rankList): array
+    {
+        $rankIndex = [];
+
+        foreach ($rankList as $index => $rankObject) {
+            $rankIndex[$index] = $rankObject->getRank();
+        }
+
+        return $rankIndex;
     }
 }

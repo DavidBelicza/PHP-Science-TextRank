@@ -21,8 +21,11 @@ class Parser implements ParserInterface
         $this->stopWordCollectionBuilder = $stopWordCollectionBuilder;
     }
 
-    public function parse(string $rawText, string $stopWordsPath): TextInterface
-    {
+    public function parse(
+        string $rawText,
+        string $stopWordsPath,
+        int $minimumTokenLength
+    ): TextInterface {
         $stopWordCollection = $this
             ->stopWordCollectionBuilder
             ->build($stopWordsPath);
@@ -33,6 +36,12 @@ class Parser implements ParserInterface
             -1,
             PREG_SPLIT_NO_EMPTY | PREG_SPLIT_DELIM_CAPTURE
         );
+
+        foreach ($sentences as $sentenceIndex => $sentence) {
+            if (1 === strlen(trim($sentence))) {
+                unset($sentences[$sentenceIndex]);
+            }
+        }
 
         $textMap = [];
 
@@ -47,10 +56,14 @@ class Parser implements ParserInterface
             foreach ($tokens as $tokenIndex => $token) {
                 $token = mb_strtolower(trim($token));
 
-                if ($stopWordCollection->isExist($token)) {
+                if (
+                    ctype_punct($token)
+                    || mb_strlen($token) < $minimumTokenLength
+                    || $stopWordCollection->isExist($token)
+                ) {
                     unset($tokens[$tokenIndex]);
                 } else {
-                    $tokens[$tokenIndex] = mb_strtolower(trim($token));
+                    $tokens[$tokenIndex] = $token;
                 }
             }
 

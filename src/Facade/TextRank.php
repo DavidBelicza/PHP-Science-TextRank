@@ -34,7 +34,8 @@ class TextRank
 
         $text = $this->parser->parse(
             $algorithmRequest->getRawText(),
-            $algorithmRequest->getStopWordCsvPath()
+            $algorithmRequest->getStopWordCsvPath(),
+            $algorithmRequest->getMinKeywordLength()
         );
 
         $nodeCollection = $this->pageRankAlgorithm->rank(
