@@ -4,39 +4,55 @@ declare(strict_types=1);
 
 namespace PhpScience\TextRank\Facade;
 
-use PhpScience\TextRank\Builder\TextRankOutputBuilderInterface;
-use PhpScience\TextRank\Data\TextRankOutputInterface;
-use PhpScience\TextRank\Service\Parser;
+use PhpScience\TextRank\Builder\AlgorithmOutputBuilderInterface;
+use PhpScience\TextRank\Data\AlgorithmOutputInterface;
+use PhpScience\TextRank\Data\AlgorithmRequestInterface;
+use PhpScience\TextRank\Factory\GeneralFactoryInterface;
+use PhpScience\TextRank\Service\ParserInterface;
+use PhpScience\TextRank\Service\SentenceWeightingInterface;
 use PhpScience\TextRank\Strategy\RankingAlgorithmStrategyInterface;
 
 class TextRank
 {
-    private Parser                            $parser;
-    private RankingAlgorithmStrategyInterface $rankingAlgorithmStrategy;
-    private TextRankOutputBuilderInterface    $textRankOutputBuilder;
+    private ParserInterface                   $parser;
+    private RankingAlgorithmStrategyInterface $pageRankAlgorithm;
+    private AlgorithmOutputBuilderInterface   $algorithmOutputBuilder;
+    private SentenceWeightingInterface        $sentenceWeighting;
 
     public function __construct(
-        Parser $parser,
-        RankingAlgorithmStrategyInterface $rankingAlgorithmStrategy,
-        TextRankOutputBuilderInterface $textRankOutputBuilder
+        GeneralFactoryInterface $generalFactory
     ) {
-        $this->parser = $parser;
-        $this->rankingAlgorithmStrategy = $rankingAlgorithmStrategy;
-        $this->textRankOutputBuilder = $textRankOutputBuilder;
+        $this->parser = $generalFactory->createParser();
+        $this->pageRankAlgorithm = $generalFactory->createAlgorithmStrategy();
+        $this->algorithmOutputBuilder = $generalFactory->createAlgorithmBuilder();
+        $this->sentenceWeighting = $generalFactory->createSentenceWeighting();
     }
 
-    public function getKeywords(
-        string $rawText,
-        int $maxKeywords
-    ): TextRankOutputInterface {
+    public function rank(
+        AlgorithmRequestInterface $algorithmRequest
+    ): AlgorithmOutputInterface {
 
-        $text = $this->parser->parse($rawText);
-        $nodeCollection = $this->rankingAlgorithmStrategy->rank($text);
+        $text = $this->parser->parse(
+            $algorithmRequest->getRawText(),
+            $algorithmRequest->getStopWordCsvPath()
+        );
 
-        return $this->textRankOutputBuilder->build(
+        $nodeCollection = $this->pageRankAlgorithm->rank(
+            $text,
+            $algorithmRequest->getPageRankPowerIteration()
+        );
+
+        $sentences = $this->sentenceWeighting->weight(
+            $text,
+            $nodeCollection
+        );
+
+        return $this->algorithmOutputBuilder->build(
             $text,
             $nodeCollection,
-            $maxKeywords
+            $sentences,
+            $algorithmRequest->getMaxKeywords(),
+            $algorithmRequest->getMaxKeySentences()
         );
     }
 }

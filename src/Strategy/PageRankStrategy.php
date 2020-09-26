@@ -28,15 +28,16 @@ class PageRankStrategy implements RankingAlgorithmStrategyInterface
         $this->pageRankDataSourceBuilder = $pageRankDataSourceBuilder;
     }
 
-    public function rank(TextInterface $text): NodeCollectionInterface
-    {
+    public function rank(
+        TextInterface $text,
+        int $iteration
+    ): NodeCollectionInterface {
         $dataSource = $this->pageRankDataSourceBuilder->build($text);
         $strategy = $this->createPageRankStrategy($dataSource);
         $ranking = $this->createRanking($strategy);
         $pageRankAlgorithm = $this->createPageRankAlgorithm($ranking, $strategy);
-        $maxIteration = 1000;
 
-        return $pageRankAlgorithm->run($maxIteration);
+        return $pageRankAlgorithm->run($iteration);
     }
 
     private function createPageRankAlgorithm(

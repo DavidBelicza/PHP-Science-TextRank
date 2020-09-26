@@ -11,47 +11,17 @@ use PhpScience\TextRank\Tool\StopWords\StopWordsAbstract;
 use PhpScience\TextRank\Tool\Summarize;
 
 /**
- * Class TextRankFacade
- *
- * This Facade class is capable to find the keywords in a raw text, weigh them
- * and retrieve the most important sentences from the whole text. It is an
- * implementation of the TextRank algorithm.
- *
- * <code>
- *      $stopWords = new English();
- *
- *      $textRank = new TextRankFacade();
- *      $textRank->setStopWords($stopWords);
- *
- *      $sentences = $textRank->summarizeTextFreely(
- *          $rawText,
- *          5,
- *          2,
- *          Summarize::GET_ALL_IMPORTANT
- *      );
- * </code>
- *
- * @package PhpScience\TextRank
+ * @deprecated Use PhpScience\TextRank\Facade\TextRank instead.
  */
 class TextRankFacade
 {
     /**
-     * Stop Words
-     *
-     * Stop Words to ignore because of dummy words. These words will not be Key
-     * Words. A, like, no yes, one, two, I, you for example.
-     *
-     * @see \PhpScience\TextRank\Tool\StopWords\English
-     *
      * @var StopWordsAbstract
      */
-    protected $stopWords;
+    protected StopWordsAbstract $stopWords;
 
     /**
-     * Set Stop Words.
-     *
-     * @param StopWordsAbstract $stopWords Stop Words to ignore because of
-     *                                     dummy words.
+     * @param StopWordsAbstract $stopWords
      */
     public function setStopWords(StopWordsAbstract $stopWords)
     {

@@ -4,24 +4,29 @@ declare(strict_types=1);
 
 namespace PhpScience\TextRank\Service;
 
+use PhpScience\TextRank\Builder\StopWordCollectionBuilderInterface;
 use PhpScience\TextRank\Builder\TextBuilderInterface;
 use PhpScience\TextRank\Data\TextInterface;
 
-class Parser
+class Parser implements ParserInterface
 {
-    private TextBuilderInterface $textBuilder;
-    private StopWordFilter       $stopWordFilter;
+    private TextBuilderInterface               $textBuilder;
+    private StopWordCollectionBuilderInterface $stopWordCollectionBuilder;
 
     public function __construct(
         TextBuilderInterface $textBuilder,
-        StopWordFilter $stopWordFilter
+        StopWordCollectionBuilderInterface $stopWordCollectionBuilder
     ) {
         $this->textBuilder = $textBuilder;
-        $this->stopWordFilter = $stopWordFilter;
+        $this->stopWordCollectionBuilder = $stopWordCollectionBuilder;
     }
 
-    public function parse(string $rawText): TextInterface
+    public function parse(string $rawText, string $stopWordsPath): TextInterface
     {
+        $stopWordCollection = $this
+            ->stopWordCollectionBuilder
+            ->build($stopWordsPath);
+
         $sentences = preg_split(
             '/(\n+)|(\.\s|\?\s|\!\s)(?![^\(]*\))/',
             $rawText,
@@ -42,7 +47,7 @@ class Parser
             foreach ($tokens as $tokenIndex => $token) {
                 $token = mb_strtolower(trim($token));
 
-                if ($this->stopWordFilter->isStopWord($token)) {
+                if ($stopWordCollection->isExist($token)) {
                     unset($tokens[$tokenIndex]);
                 } else {
                     $tokens[$tokenIndex] = mb_strtolower(trim($token));

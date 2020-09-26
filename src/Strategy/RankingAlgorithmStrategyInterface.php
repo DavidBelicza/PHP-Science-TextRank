@@ -9,5 +9,8 @@ use PhpScience\TextRank\Data\TextInterface;
 
 interface RankingAlgorithmStrategyInterface
 {
-    public function rank(TextInterface $text): NodeCollectionInterface;
+    public function rank(
+        TextInterface $text,
+        int $iteration
+    ): NodeCollectionInterface;
 }
