@@ -1,25 +1,24 @@
-# PHP.Science - TextRank
+<h1 align="center">
+TextRank
+</h1>
 
-[![Build Status](https://travis-ci.org/DavidBelicza/PHP-Science-TextRank.svg?branch=master)](https://travis-ci.org/DavidBelicza/PHP-Science-TextRank)
-[![Latest Stable Version](https://poser.pugx.org/php-science/textrank/v/stable.svg)](https://packagist.org/packages/php-science/textrank)
-[![License](https://img.shields.io/badge/license-MIT-33CCFF.svg)](https://opensource.org/licenses/MIT)
-[![composer.lock](https://poser.pugx.org/php-science/textrank/composerlock)](https://packagist.org/packages/php-science/textrank)
+<p align="center">
+	<a href="https://packagist.org/packages/php-science/textrank">
+	    <img src="https://poser.pugx.org/php-science/textrank/v/stable.svg" />
+	</a>
+	<a href="https://packagist.org/packages/php-science/textrank">
+        <img src="https://poser.pugx.org/php-science/textrank/downloads"/>
+    </a>
+	<a href="https://github.com/PHP-Science/TextRank/blob/master/LICENSE">
+        <img src="https://img.shields.io/badge/license-MIT-FFF300.svg"/>
+    </a>
+</p>
 
+<p align="center">
 This source code is an implementation of the TextRank algorithm (Automatic summarization) on PHP7 strict mode. It can summarize a text, article for example to a short paragraph. Before it would start the summarizing it removes the junk words what are defined in the Stopwords namespace. It is possible to extend it with another languages.
-
-<img src="http://iceducation.ca/wp-content/uploads/2018/01/Science.png" />
-
-## Authors, Contributors
-
-Name | GitHub user
---- | ---
-David Belicza | @DavidBelicza
-Riccardo Marton | @riccardomarton
-Syndesi | @Syndesi 
-vincentsch | @vincentsch
-Andrew Welch | @khalwat 
-Andrey Astashov | @mvcaaa
-Leo Toneff | @bragle
+<br />
+<br />
+</p>
 
 ## TextRank or Automatic summarization
 > Automatic summarization is the process of reducing a text document with a computer program in order to create a summary that retains the most important points of the original document. Technologies that can make a coherent summary take into account variables such as length, writing style and syntax. Automatic data summarization is part of machine learning and data mining. The main idea of summarization is to find a representative subset of the data, which contains the information of the entire set. Summarization technologies are used in a large number of sectors in industry today. - Wikipedia
@@ -71,3 +70,15 @@ $result = $api->getHighlights($text);
 $result = $api->summarizeTextBasic($text);
 ```
 More examples: https://github.com/DoveID/PHP-Science-TextRank/blob/master/tests/TextRankFacadeTest.php
+
+## Authors, Contributors
+
+Name | GitHub user
+--- | ---
+David Belicza | @DavidBelicza
+Riccardo Marton | @riccardomarton
+Syndesi | @Syndesi 
+vincentsch | @vincentsch
+Andrew Welch | @khalwat 
+Andrey Astashov | @mvcaaa
+Leo Toneff | @bragle
