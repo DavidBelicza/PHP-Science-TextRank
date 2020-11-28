@@ -1,7 +1,7 @@
 {
     "name": "php-science/textrank",
     "description": "TextRank (automatic text summarization) for PHP7 and HHVM.",
-    "keywords": ["science", "textrank", "automatic", "summarization", "PHP7", "HHVM", "strict"],
+    "keywords": ["science", "textrank", "automatic", "summarization", "PHP7", "PHP8", "strict"],
     "license": "MIT",
     "authors": [
         {
@@ -10,12 +10,12 @@
         }
     ],
     "require": {
-        "php": "7.*",
+        "php": ">=7.2",
         "ext-ctype": "*",
         "ext-mbstring": "*"
     },
     "require-dev": {
-        "phpunit/phpunit": "^5.4"
+        "phpunit/phpunit": "9.*"
     },
     "autoload": {
         "psr-4": {

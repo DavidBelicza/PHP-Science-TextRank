@@ -14,12 +14,13 @@ namespace PhpScience\TextRank;
 use PhpScience\TextRank\Tool\StopWords\English;
 use PhpScience\TextRank\Tool\StopWords\Russian;
 use PhpScience\TextRank\Tool\Summarize;
+use PHPUnit\Framework\TestCase;
 
-class TextRankFacadeTest extends \PHPUnit\Framework\TestCase
+class TextRankFacadeTest extends TestCase
 {
     protected $sampleText1;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
