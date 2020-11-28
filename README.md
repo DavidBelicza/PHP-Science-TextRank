@@ -3,6 +3,9 @@ TextRank
 </h1>
 
 <p align="center">
+    <a href="https://github.com/PHP-Science/TextRank/actions">
+		<img src="https://github.com/php-science/textrank/workflows/tests/badge.svg"/>
+	</a>
 	<a href="https://packagist.org/packages/php-science/textrank">
 	    <img src="https://poser.pugx.org/php-science/textrank/v/stable.svg" />
 	</a>
@@ -69,7 +72,9 @@ $result = $api->getHighlights($text);
 // Array of the most important sentences from the text:
 $result = $api->summarizeTextBasic($text);
 ```
-More examples: https://github.com/DoveID/PHP-Science-TextRank/blob/master/tests/TextRankFacadeTest.php
+More examples: 
+* https://github.com/DoveID/PHP-Science-TextRank/blob/master/tests/TextRankFacadeTest.php
+* https://php.science
 
 ## Authors, Contributors
 
