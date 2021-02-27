@@ -73,7 +73,7 @@ $result = $api->getHighlights($text);
 $result = $api->summarizeTextBasic($text);
 ```
 More examples: 
-* https://github.com/DoveID/PHP-Science-TextRank/blob/master/tests/TextRankFacadeTest.php
+* [tests/TextRankFacadeTest.php](https://github.com/DoveID/PHP-Science-TextRank/blob/master/tests/TextRankFacadeTest.php)
 * https://php.science
 
 ## Authors, Contributors
@@ -87,3 +87,4 @@ vincentsch | @vincentsch
 Andrew Welch | @khalwat 
 Andrey Astashov | @mvcaaa
 Leo Toneff | @bragle
+Willy Arisky | @willyarisky
