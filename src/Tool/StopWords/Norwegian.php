@@ -2,7 +2,7 @@
 /**
  * PHP Science TextRank (http://php.science/)
  *
- * @see     https://github.com/doveid/php-science-textrank
+ * @see     https://github.com/DavidBelicza/PHP-Science-TextRank
  * @license https://opensource.org/licenses/MIT the MIT License
  * @author  Syndesi <github.com/Syndesi>
  */

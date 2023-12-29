@@ -18,39 +18,42 @@ TextRank
 </p>
 
 <p align="center">
-This source code is an implementation of the TextRank algorithm (Automatic summarization) on PHP7 strict mode. It can summarize a text, article for example to a short paragraph. Before it would start the summarizing it removes the junk words what are defined in the Stopwords namespace. It is possible to extend it with another languages.
-<br />
+This source code is an implementation of TextRank algorithm in PHP programming language, under MIT licence.<br />
 <br />
 </p>
 
-## TextRank or Automatic summarization
+# TextRank vs. ChatGPT
+GPTs like ChatGPT are supervised language models that understand the context and generate new content from the given
+input using vast resources while TextRank is a cost-efficient/low-cost text extraction algorithm. TextRank algorithm 
+also can be used as a pre-processor to a GPT model to reduce the text size to save on resource consumption.
+
+# TextRank or Automatic summarization
 > Automatic summarization is the process of reducing a text document with a computer program in order to create a summary that retains the most important points of the original document. Technologies that can make a coherent summary take into account variables such as length, writing style and syntax. Automatic data summarization is part of machine learning and data mining. The main idea of summarization is to find a representative subset of the data, which contains the information of the entire set. Summarization technologies are used in a large number of sectors in industry today. - Wikipedia
 
 The algorithm of this implementation is:
-* Find sentences,
-* Remove stopwords,
-* Create integer values by find and count the matching words,
-* Change the integer values by the related words' integer values,
-* Normalize values to create scores,
-* Order by scores
+* Extracts sentences,
+* Removes stopwords,
+* Adds integer values to words by finding and counting the matching words,
+* Weights the values of the words,
+* Normalizes values to get the scores,
+* Sorts by scores
 
-## Install
+# Install to use it in your project
 ```
+cd your-project-folder
 composer require php-science/textrank
 ```
 
-## Test
+# Install for contributing
 ```
-cd project-folder
+cd git-project-folder
+docker-compose build
+docker-compose up -d
+composer install
 composer test
 ```
-or
-```
-cd project-folder
-phpunit --colors='always' $(pwd)/tests
-```
 
-## Examples
+# Examples
 ```php
 
 use PhpScience\TextRank\Tool\StopWords\English;
@@ -73,10 +76,10 @@ $result = $api->getHighlights($text);
 $result = $api->summarizeTextBasic($text);
 ```
 More examples: 
-* [tests/TextRankFacadeTest.php](https://github.com/DoveID/PHP-Science-TextRank/blob/master/tests/TextRankFacadeTest.php)
+* [tests/TextRankFacadeTest.php](https://github.com/DavidBelicza/PHP-Science-TextRank/blob/master/tests/TextRankFacadeTest.php)
 * https://php.science
 
-## Authors, Contributors
+# Authors, Contributors
 
 Name | GitHub user
 --- | ---
@@ -89,3 +92,5 @@ Andrey Astashov | @mvcaaa
 Leo Toneff | @bragle
 Willy Arisky | @willyarisky
 Robert-Jan Keizer | @KeizerDev
+Morty | @evil1morty
+Sezer Fidancı | @SezerFidanci

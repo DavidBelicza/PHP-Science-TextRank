@@ -2,9 +2,9 @@
 /**
  * PHP Science TextRank (http://php.science/)
  *
- * @see     https://github.com/doveid/php-science-textrank
+ * @see     https://github.com/DavidBelicza/PHP-Science-TextRank
  * @license https://opensource.org/licenses/MIT the MIT License
- * @author  David Belicza <87.bdavid@gmail.com>
+ * @author  David Belicza <david@belicza.com>
  */
 
 declare(strict_types=1);
