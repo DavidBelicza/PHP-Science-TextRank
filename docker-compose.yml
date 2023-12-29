@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+
+  cli:
+    container_name: ${PREFIX}_cli
+    image: ${PREFIX}_cli
+    build: ./docker/cli
+    volumes:
+      - ${SOURCE_DIR}:${TARGET_DIR}
+    stdin_open: true

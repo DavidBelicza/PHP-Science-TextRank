@@ -1,12 +1,12 @@
 {
     "name": "php-science/textrank",
-    "description": "TextRank (automatic text summarization) for PHP7 and HHVM.",
-    "keywords": ["science", "textrank", "automatic", "summarization", "PHP7", "PHP8", "strict"],
+    "description": "TextRank (automatic text summarization) for PHP.",
+    "keywords": ["science", "textrank", "automatic", "summarization", "PHP", "PHP8", "strict", "ai", "artificial", "intelligence"],
     "license": "MIT",
     "authors": [
         {
             "name": "David Belicza",
-            "email": "87.bdavid@gmail.com"
+            "email": "david@belicza.com"
         }
     ],
     "require": {
@@ -19,7 +19,12 @@
     },
     "autoload": {
         "psr-4": {
-            "PhpScience\\TextRank\\": ["src/", "tests/"]
+            "PhpScience\\TextRank\\": ["src/"]
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "PhpScience\\TextRank\\": ["tests/"]
         }
     },
     "scripts": {
