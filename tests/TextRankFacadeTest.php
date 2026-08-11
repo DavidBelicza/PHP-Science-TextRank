@@ -156,4 +156,66 @@ class TextRankFacadeTest extends TestCase
         $result = $api->getOnlyKeyWords('');
         $this->assertCount(0, $result);
     }
+
+    public function testKeyWordsAreNotBrokenByMultiByteMarks()
+    {
+        $api = new TextRankFacade();
+        $api->setStopWords(new Russian());
+
+        $result = $api->getOnlyKeyWords(
+            '«Москва» — столица России. Город «Москва» имеет древнюю историю! '
+            . 'Кто живёт в Москве? Многие люди приезжают в город Москва.'
+        );
+
+        $this->assertNotEmpty($result);
+
+        foreach (array_keys($result) as $keyWord) {
+            $keyWord = (string) $keyWord;
+
+            $this->assertTrue(
+                mb_check_encoding($keyWord, 'UTF-8'),
+                'Keyword is not valid UTF-8: ' . bin2hex($keyWord)
+            );
+
+            $this->assertStringNotContainsString(
+                '?',
+                $keyWord,
+                'Keyword contains the mb_substitute_character: ' . $keyWord
+            );
+
+            $this->assertSame(
+                0,
+                preg_match('/^[\p{P}\p{S}]|[\p{P}\p{S}]$/u', $keyWord),
+                'Keyword starts or ends with punctuation: ' . $keyWord
+            );
+        }
+
+        $this->assertArrayHasKey('столица', $result);
+        $this->assertArrayHasKey('москве', $result);
+    }
+
+    public function testMinimumWordLengthCountsCharactersNotBytes()
+    {
+        $api = new TextRankFacade();
+
+        $result = $api->getOnlyKeyWords('не об до за по на не об до за по на');
+
+        $this->assertCount(0, $result);
+    }
+
+    public function testSentenceMarksAreKept()
+    {
+        $api = new TextRankFacade();
+        $api->setStopWords(new Russian());
+
+        $result = $api->summarizeTextFreely(
+            'Москва — столица России. Кто живёт в Москве? '
+            . 'Многие люди приезжают в Москву. Город Москва растёт.',
+            10,
+            5,
+            Summarize::GET_ALL_IMPORTANT
+        );
+
+        $this->assertStringContainsString('?', implode(' ', $result));
+    }
 }

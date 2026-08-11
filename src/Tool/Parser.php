@@ -160,7 +160,7 @@ class Parser
     protected function getWords(string $subText): array
     {
         $words = preg_split(
-            '/(?:(^\p{P}+)|(\p{P}*\s+\p{P}*)|(\p{P}+$))/',
+            '/(?:(^\p{P}+)|(\p{P}*\s+\p{P}*)|(\p{P}+$))/u',
             $subText,
             -1,
             PREG_SPLIT_NO_EMPTY
@@ -178,13 +178,13 @@ class Parser
         if ($this->stopWords) {
             return array_filter($words, function($word) {
                 return !ctype_punct($word)
-                        && strlen($word) > $this->minimumWordLength
+                        && mb_strlen($word) > $this->minimumWordLength
                         && !$this->stopWords->exist($word);
             });
         } else {
             return array_filter($words, function($word) {
                 return !ctype_punct($word)
-                        && strlen($word) > $this->minimumWordLength;
+                        && mb_strlen($word) > $this->minimumWordLength;
             });
         }
     }
